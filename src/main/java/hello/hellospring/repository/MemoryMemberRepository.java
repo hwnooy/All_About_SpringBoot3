@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-//@Repository
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
     // 저장을 하기 위한 메모리 공간 변수
     private static Map<Long, Member> store

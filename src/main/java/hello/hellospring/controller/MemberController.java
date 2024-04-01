@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MemberController {
 
+    private final MemberService memberService;
+    //컨테이너에 등록하면 하나만 하면 됨
+    @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
 
-    //@Autowired
-    private final MemberService memberService;
-    //컨테이너에 등록하면 하나만 하면 됨
+
+
 
 }

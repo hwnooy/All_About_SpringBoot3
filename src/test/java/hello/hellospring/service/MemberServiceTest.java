@@ -18,7 +18,7 @@ class MemberServiceTest {
     @BeforeEach
     public void beforeEach(){
         // DI 개념
-        // 테스트 실행할때마다 메모리멤버 리포지ㄴ터리 만들고
+        // 테스트 실행할때마다 메모리멤버 리포지터리 만들고
         // 멤버서비스에 넣어줌, 같은 메모리멤버서비스를 사용할 수 있게
         // 멤버 서비스 기준에선 멤버 리포지토리를 주입해준것?
         memberRepository = new MemoryMemberRepository();
@@ -68,6 +68,8 @@ class MemberServiceTest {
 //            // 기존의 예외에 걸려 실행되는 ifPresent()문으로
 //             assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 //        }
+
+
     }
     @Test
     void findMembers() {
