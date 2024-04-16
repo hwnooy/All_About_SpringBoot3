@@ -5,6 +5,6 @@
 
 ## Branch 소개 
 
-main : 프로젝트 기본구조 세팅 + 추후 완강 후 NEW Project 구축 예정 
-0.spring_introduction : 스프링 입문 강의
+main : 프로젝트 기본구조 세팅 + 추후 완강 후 NEW Project 구축 예정 <br>
+0.spring_introduction : 스프링 입문 강의 <br>
 spirng_core : 스프링 핵심 원리 - 기본편 
