@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.desktop.SystemSleepEvent;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,13 +26,21 @@ public class MemberService {
     }
     // 회원가입, 룰은 동명이인 안됨
     public Long join(Member member){
-        //같은 이름의 중복회원X, optional 감싸면 옵셔널 안에 멤버
-        // command option v인가 b 옵션
-        // orElseGet()을 많이 씀
-        // Optional<Member> result = memberRepository.findByName(member.getName());
-        validateDuplicateMember(member);
-        memberRepository.save(member);
-        return member.getId();
+
+        long start = System.currentTimeMillis();
+        try {
+            //같은 이름의 중복회원X, optional 감싸면 옵셔널 안에 멤버
+            // command option v인가 b 옵션
+            // orElseGet()을 많이 씀
+            // Optional<Member> result = memberRepository.findByName(member.getName());
+            validateDuplicateMember(member);
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish-start;
+            System.out.println("join = " + timeMs +"ms");
+        }
     }
 
     private void validateDuplicateMember(Member member) {
@@ -43,7 +52,15 @@ public class MemberService {
 
     /* 전체 회원 조회 - 비즈니스 처리가 서비스, 리포지토리는 단순 기계 => 네이밍도 적용*/
     public List<Member> findMembers(){
-        return memberRepository.findAll();
+        long start = System.currentTimeMillis();
+        try{
+            return memberRepository.findAll();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("findMembers "+timeMs +"ms");
+        }
+
     }
 
     public Optional<Member> findOne(Long memberId){
