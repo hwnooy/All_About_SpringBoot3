@@ -10,13 +10,18 @@ import hello.hellospring.member.MemoryMemberRepository;
 public class OrderServiceImpl implements OrderService{
 
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository; //= new MemoryMemberRepository();
     // 인터페이스에만 의존하도록 수정
     // private DiscountPolicy discountPolicy; => nullPoiint 구체 객체가 없음
     // 그래서 이 인터페이스가 직접 구현객체를 선택할 수 있게 그 아래와 같이 설정한다.
-    private DiscountPolicy discountPolicy;
+    private final DiscountPolicy discountPolicy;
     // private DiscountPolicy discountPolicy = new FixDiscountPolicy();
 
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     // private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     @Override

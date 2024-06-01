@@ -1,15 +1,25 @@
 package hello.hellospring;
 
-import hello.hellospring.member.MemberService;
-import hello.hellospring.member.MemberServiceImpl;
-import hello.hellospring.member.MemoryMemberRepository;
+import hello.hellospring.discount.DiscountPolicy;
+import hello.hellospring.discount.FixDiscountPolicy;
+import hello.hellospring.member.*;
+import hello.hellospring.order.OrderService;
+import hello.hellospring.order.OrderServiceImpl;
 
 public class AppConfig {
     // memberService만들기 원래는 직접 멤버서비스 안에서 memberservice
     public MemberService memberService(){
+        // memberServiceImple은 private final MemberRepository memberRepository;의 객체를 만든다.
+        // appconfig는 memoryMemberRepository를 생성하고 그 참조값을 memberServiceImpl을 생성하면서 생성자로 전달
         // 객체 생성 후 원래 memberserviceimple 이 했는데 appconfig에서 이제 수행함
         return new MemberServiceImpl(new MemoryMemberRepository());
     }
+
+    public OrderService orderService() {
+        // 실제 객체를 여기서 주입!!
+        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
+    }
+
 
 
 }
