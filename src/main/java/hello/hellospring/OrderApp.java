@@ -10,9 +10,12 @@ import hello.hellospring.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
+//  after appconfig making
         AppConfig appConfig = new AppConfig();
         MemberService memberService = appConfig.memberService();
         OrderService orderService = appConfig.orderService();
+
+//  before
 //        MemberService memberService = new MemberServiceImpl();
 //        OrderService orderService = new OrderServiceImpl();
 
