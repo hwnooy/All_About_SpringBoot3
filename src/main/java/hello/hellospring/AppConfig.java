@@ -2,6 +2,7 @@ package hello.hellospring;
 
 import hello.hellospring.discount.DiscountPolicy;
 import hello.hellospring.discount.FixDiscountPolicy;
+import hello.hellospring.discount.RateDiscountPolicy;
 import hello.hellospring.member.*;
 import hello.hellospring.order.OrderService;
 import hello.hellospring.order.OrderServiceImpl;
@@ -31,6 +32,7 @@ public class AppConfig {
 
     // 이 함수를 orderService()에서 콜해서 fixdiscountpolicy를 사용하는것
     public DiscountPolicy discountPolicy(){
-        return new FixDiscountPolicy();
+        //return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
