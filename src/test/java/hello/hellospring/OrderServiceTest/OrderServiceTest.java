@@ -1,5 +1,6 @@
 package hello.hellospring.OrderServiceTest;
 
+import hello.hellospring.AppConfig;
 import hello.hellospring.member.Grade;
 import hello.hellospring.member.Member;
 import hello.hellospring.member.MemberService;
@@ -9,11 +10,22 @@ import hello.hellospring.order.OrderService;
 import hello.hellospring.order.OrderServiceImpl;
 //import org.assertj.core.api.Assertions;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
+//    MemberService memberService = new MemberServiceImpl();
+//    OrderService orderService = new OrderServiceImpl();
 
     @Test
     void createOrder(){

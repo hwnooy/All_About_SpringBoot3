@@ -7,7 +7,9 @@ import hello.hellospring.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        //MemberService memberService = new MemberServiceImpl();
         // cmd +alt + v : new한 객체를 Member memberA를 앞에 만들어줌
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
